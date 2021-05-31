@@ -42,7 +42,7 @@ VideoLab 是开源的，高性能且灵活的 iOS 视频剪辑与特效框架，
 1. 创建一个或多个 `AVAsset`。
 2. 创建 `AVComposition`、`AVVideoComposition` 及 `AVAudioMix`。其中 `AVComposition` 指定了音视频轨道的时间对齐，`AVVideoComposition` 指定了视频轨道在任何给定的时间点的几何变换与混合，`AVAudioMix` 管理音频轨道的混合参数。
 3. 我们可以使用这三个对象来创建 `AVPlayerItem`，并从中创建一个 `AVPlayer` 来播放编辑效果。
-4. 此外，我们也可以使用这三个对象来创建 AVAssetExportSession，用来将编辑结果写入文件。
+4. 此外，我们也可以使用这三个对象来创建 `AVAssetExportSession`，用来将编辑结果写入文件。
 
 ### AVComposition
 
@@ -81,11 +81,13 @@ VideoLab 是开源的，高性能且灵活的 iOS 视频剪辑与特效框架，
 
 <img src="./Resource/VideoLab-AVAudioMix.png" width="400">
 
-`AVAudioMixInputParameters` 包含一个 `MTAudioProcessingTap`，你可以使用它来实时处理音频。当然对于线性音量变化可以直接使用音量斜率接口。
+`AVAudioMixInputParameters` 包含一个 `MTAudioProcessingTap`，你可以使用它来实时处理音频。当然，对于线性音量变化可以直接使用音量斜率接口 `setVolumeRampFromStartVolume:toEndVolume:timeRange:`
 
-此外 `AVAudioMixInputParameters` 还包含一个 `AVAudioTimePitchAlgorithm`，你可以使用它来设置音调。
+此外，`AVAudioMixInputParameters` 还包含一个 `AVAudioTimePitchAlgorithm`，你可以使用它来设置音调。
 
-## 从 AE 的角度设计框架
+## 框架的设计与实现
+
+### 从 AE 的角度设计框架
 
 ### 渲染
 
